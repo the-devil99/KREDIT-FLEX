@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KreditFlex India | Instant Personal Loan Portal</title>
+  
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================
+       FESTIVE & PREMIUM INDIAN FINTECH PALETTE
+       ========================================= */
+    :root {
+      /* Deep Indigo for Trust & Security (Like HDFC/SBI/CRED) */
+      --brand-dark: #0B1B3D; 
+      --brand-blue: #1A3673;
+      
+      /* Vibrant Saffron/Orange for Action & Energy */
+      --primary: #FF6B00;
+      --primary-dark: #E65A00;
+      --primary-glow: rgba(255, 107, 0, 0.35);
+      
+      /* Prosperity Gold & Green */
+      --gold: #FFD700;
+      --accent-green: #00BFA6;
+      --accent-green-bg: #E5F9F6;
+      
+      /* Clean Form Colors */
+      --bg-light: #F4F7FA;
+      --card-white: #FFFFFF;
+      
+      /* Text Colors */
+      --text-dark: #1E293B;
+      --text-muted: #64748B;
+      --text-light: #94A3B8;
+      
+      --border-color: #E2E8F0;
+      --danger: #EF4444;
+      
+      --radius-xl: 24px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      
+      /* Neumorphic Shadows */
+      --shadow-soft: 0 10px 40px -10px rgba(26, 54, 115, 0.08);
+      --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* Outer Wrapper */
+    .viewport-app {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    /* =========================================
+       TOP HEADER (Clean & Professional)
+       ========================================= */
+    .top-navbar {
+      height: 70px;
+      background: var(--card-white);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 0 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 50;
+    }
+
+    .brand-group { display: flex; align-items: center; gap: 12px; }
+
+    .brand-logo {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--primary) 0%, #FF9800 100%);
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 1.5rem;
+      box-shadow: 0 4px 15px var(--primary-glow);
+    }
+
+    .brand-name { font-size: 1.5rem; font-weight: 800; color: var(--brand-dark); letter-spacing: -0.5px; }
+    .brand-name span { color: var(--primary); }
+
+    .nav-trust-pills { display: flex; align-items: center; gap: 12px; }
+
+    .pill-item {
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.8rem; font-weight: 700;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    .pill-item.highlight {
+      background: #FFF4ED;
+      border-color: #FFD2B3;
+      color: var(--primary-dark);
+    }
+
+    /* =========================================
+       MAIN LAYOUT
+       ========================================= */
+    .dashboard-body {
+      display: flex;
+      flex: 1;
+      width: 100%;
+      height: calc(100vh - 70px);
+    }
+
+    /* =========================================
+       LEFT PANEL: Decorative Hero Section
+       ========================================= */
+    .left-hero-panel {
+      width: 40%;
+      background: linear-gradient(145deg, var(--brand-dark) 0%, var(--brand-blue) 100%);
+      position: relative;
+      padding: 40px 50px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    /* Decorative Indian Mandala/Geometric Overlay */
+    .left-hero-panel::before {
+      content: '';
+      position: absolute;
+      top: -10%; right: -10%;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .left-hero-panel::after {
+      content: '';
+      position: absolute;
+      bottom: -10%; left: -10%;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(255,107,0,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .hero-content { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 24px; }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(90deg, #FFD700 0%, #FFA000 100%);
+      color: var(--brand-dark);
+      padding: 6px 16px; border-radius: 30px;
+      font-size: 0.85rem; font-weight: 800;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+      width: fit-content;
+    }
+
+    .hero-title {
+      font-size: 2.5rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.5px;
+    }
+    .hero-title span { color: var(--gold); }
+
+    .hero-desc { color: #CBD5E1; font-size: 1rem; line-height: 1.6; font-weight: 500; }
+
+    /* Interactive Live EMI Preview Widget */
+    .live-credit-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius-xl);
+      padding: 30px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    .card-label { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; font-weight: 800; letter-spacing: 1px; }
+    
+    .credit-amount-hero { font-size: 3rem; font-weight: 800; color: #ffffff; margin: 10px 0; letter-spacing: -1px; text-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+
+    .feature-list { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
+    .feature-item { display: flex; align-items: center; gap: 12px; font-size: 0.95rem; font-weight: 600; }
+    .feature-icon {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: var(--accent-green); color: var(--brand-dark);
+      display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 900;
+    }
+
+    /* Made in India Footer */
+    .made-in-india {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(0,0,0,0.2); padding: 12px 20px;
+      border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.85rem; font-weight: 600; color: #E2E8F0;
+    }
+    .made-in-india span.flag { font-size: 1.2rem; }
+
+    /* =========================================
+       RIGHT PANEL: Clean White Wizard Form
+       ========================================= */
+    .right-wizard-panel {
+      width: 60%; background: var(--card-white);
+      display: flex; flex-direction: column; position: relative;
+    }
+
+    /* Stepper Bar Header */
+    .wizard-header-stepper {
+      padding: 30px 60px 20px; background: var(--card-white);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .stepper-track { display: flex; justify-content: space-between; position: relative; }
+    .stepper-track::before {
+      content: ''; position: absolute; top: 16px; left: 10%; right: 10%;
+      height: 4px; background: var(--bg-light); z-index: 1; border-radius: 4px;
+    }
+    .stepper-progress-fill {
+      position: absolute; top: 16px; left: 10%; width: 0%; height: 4px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--accent-green) 100%);
+      z-index: 1; border-radius: 4px; transition: width 0.5s ease-in-out;
+    }
+
+    .step-node-wrapper { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; background: var(--card-white); padding: 0 10px; }
+    
+    .step-circle {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--bg-light); border: 2px solid var(--border-color);
+      color: var(--text-muted); display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.9rem; transition: all 0.3s ease;
+    }
+    
+    .step-title-text { font-size: 0.75rem; font-weight: 800; color: var(--text-muted); margin-top: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    .step-node-wrapper.active .step-circle { border-color: var(--primary); background: var(--primary); color: #fff; box-shadow: 0 0 15px var(--primary-glow); }
+    .step-node-wrapper.active .step-title-text { color: var(--brand-dark); }
+    .step-node-wrapper.completed .step-circle { border-color: var(--accent-green); background: var(--accent-green); color: #fff; }
+    .step-node-wrapper.completed .step-title-text { color: var(--accent-green); }
+
+    /* Wizard Content */
+    .wizard-content-body { padding: 40px 60px; flex: 1; overflow-y: auto; }
+    .wizard-step { display: none; animation: slideUp 0.4s ease-out forwards; opacity: 0; }
+    .wizard-step.active { display: block; }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .step-header-block { margin-bottom: 30px; text-align: center; }
+    .step-header-block h2 { font-size: 1.8rem; font-weight: 800; color: var(--brand-dark); }
+    .step-header-block p { font-size: 1rem; color: var(--text-muted); margin-top: 6px; }
+
+    /* Forms & Inputs */
+    .form-grid-layout { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .input-box { display: flex; flex-direction: column; }
+    .input-box.full-width { grid-column: span 2; }
+
+    label { font-size: 0.85rem; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+    
+    .input-field-wrap { position: relative; display: flex; align-items: center; }
+    .field-icon { position: absolute; left: 16px; font-size: 1.2rem; color: var(--text-light); pointer-events: none; }
+    
+    input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="password"], select {
+      width: 100%; padding: 16px 16px 16px 48px;
+      border: 2px solid var(--border-color); border-radius: var(--radius-md);
+      font-size: 1rem; font-weight: 600; color: var(--brand-dark); background: var(--card-white);
+      outline: none; transition: all 0.2s ease;
+    }
+
+    input:focus, select:focus { border-color: var(--primary); box-shadow: 0 0 0 4px var(--primary-glow); }
+    
+    .error-hint { font-size: 0.75rem; color: var(--danger); font-weight: 700; margin-top: 6px; display: none; }
+    .input-box.invalid input, .input-box.invalid select { border-color: var(--danger); background-color: #FEF2F2; }
+    .input-box.invalid .error-hint { display: block; }
+
+    /* Calculator Sliders */
+    .calc-card-panel {
+      background: var(--card-white); border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg); padding: 30px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .range-header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .range-label-title { font-size: 1rem; font-weight: 800; color: var(--brand-dark); }
+    .range-value-pill { font-size: 1.4rem; font-weight: 800; color: var(--primary); background: #FFF4ED; padding: 6px 16px; border-radius: 8px; }
+
+    input[type="range"] {
+      width: 100%; height: 8px; border-radius: 6px; background: var(--border-color);
+      outline: none; accent-color: var(--primary); cursor: pointer; margin-bottom: 8px;
+    }
+    .range-bounds { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-light); font-weight: 700; margin-bottom: 30px; }
+
+    /* EMI Summary Box */
+    .emi-summary-card {
+      background: var(--bg-light); border-radius: var(--radius-md); padding: 24px; border: 1px dashed #CBD5E1;
+    }
+    .emi-main-row { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid #CBD5E1; margin-bottom: 16px; }
+    .emi-label { font-size: 1rem; font-weight: 800; color: var(--text-dark); }
+    .emi-value { font-size: 1.8rem; font-weight: 800; color: var(--accent-green); }
+    .data-row { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 12px; }
+    .data-row span.bold { font-weight: 800; color: var(--brand-dark); }
+
+    /* Info Banners & Checkboxes */
+    .info-banner {
+      background: #EFF6FF; border: 1px solid #BFDBFE; border-radius: var(--radius-md);
+      padding: 16px; display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: #1D4ED8; margin-bottom: 24px; font-weight: 500;
+    }
+    .terms-row { display: flex; align-items: flex-start; gap: 12px; margin-top: 24px; background: var(--bg-light); padding: 16px; border-radius: var(--radius-md); }
+    .terms-row input { margin-top: 4px; accent-color: var(--primary); width: 20px; height: 20px; cursor: pointer; }
+    .terms-row label { font-size: 0.85rem; color: var(--text-dark); font-weight: 600; line-height: 1.5; margin: 0; }
+
+    /* Review Card */
+    .final-review-card { background: var(--brand-dark); color: #fff; border-radius: var(--radius-lg); padding: 24px; margin-top: 24px; box-shadow: 0 10px 25px rgba(11, 27, 61, 0.2); }
+    .final-review-card h4 { color: var(--gold); text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; margin-bottom: 16px; }
+    .review-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .review-item span.lbl { color: #94A3B8; display: block; font-size: 0.8rem; font-weight: 600; margin-bottom: 4px; }
+    .review-item span.val { font-weight: 800; color: #fff; font-size: 1.1rem; }
+
+    /* Control Buttons */
+    .wizard-footer-controls { padding: 24px 60px; background: var(--card-white); border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; gap: 16px; box-shadow: 0 -4px 10px rgba(0,0,0,0.02); }
+    
+    .btn {
+      padding: 16px 32px; border-radius: var(--radius-md); font-size: 1.1rem; font-weight: 800; border: none; cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px; transition: all 0.3s ease; flex: 1; position: relative; overflow: hidden;
+    }
+    
+    .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 8px 20px var(--primary-glow); }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    
+    /* Shimmer effect for main buttons */
+    .btn-primary::after, .btn-success::after {
+      content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+      transform: skewX(-20deg); animation: shimmer 3s infinite;
+    }
+    @keyframes shimmer { 100% { left: 200%; } }
+
+    .btn-secondary { background: var(--bg-light); color: var(--brand-dark); border: 2px solid var(--border-color); flex: 0.4; }
+    .btn-secondary:hover { background: #E2E8F0; }
+    .btn-success { background: var(--accent-green); color: var(--brand-dark); box-shadow: 0 8px 20px rgba(0, 191, 166, 0.3); }
+    .btn-success:hover { background: #00A38D; color: #fff; transform: translateY(-2px); }
+
+    /* Success Modal */
+    .modal-backdrop { display: none; position: fixed; inset: 0; background: rgba(11, 27, 61, 0.85); backdrop-filter: blur(8px); z-index: 999; justify-content: center; align-items: center; padding: 20px; }
+    .modal-box { background: #fff; width: 100%; max-width: 480px; border-radius: var(--radius-xl); padding: 40px; text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    
+    @keyframes modalPop { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+    
+    .modal-icon-circle { width: 80px; height: 80px; background: var(--accent-green-bg); color: var(--accent-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin: 0 auto 20px; }
+    .modal-box h3 { font-size: 1.8rem; font-weight: 800; color: var(--brand-dark); margin-bottom: 10px; }
+    .modal-box p { font-size: 1rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px; font-weight: 500; }
+    .ref-badge { background: #FFF4ED; border: 2px dashed #FF9800; padding: 12px 20px; border-radius: 12px; font-size: 1.1rem; font-weight: 800; color: var(--primary-dark); display: inline-block; margin-bottom: 24px; }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      .dashboard-body { flex-direction: column; height: auto; overflow-y: auto; }
+      .left-hero-panel, .right-wizard-panel { width: 100%; }
+      .top-navbar { padding: 0 20px; }
+      .left-hero-panel { padding: 40px 20px; border-radius: 0 0 24px 24px; }
+      .wizard-header-stepper { padding: 20px; }
+      .wizard-content-body { padding: 30px 20px; }
+      .wizard-footer-controls { padding: 20px; }
+      .form-grid-layout { grid-template-columns: 1fr; }
+      .input-box.full-width { grid-column: span 1; }
+      .nav-trust-pills { display: none; } /* Hide pills on mobile header to save space */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="viewport-app">
+    
+    <!-- Top Navigation -->
+    <header class="top-navbar">
+      <div class="brand-group">
+        <div class="brand-logo">₹</div>
+        <div class="brand-name">Kredit<span>Flex</span></div>
+      </div>
+      <div class="nav-trust-pills">
+        <div class="pill-item highlight">
+          <span>⚡ Instant UPI/Bank Payout</span>
+        </div>
+        <div class="pill-item">
+          <span>🛡️ RBI Approved NBFC</span>
+        </div>
+        <div class="pill-item">
+          <span>🇮🇳 100% Paperless KYC</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <div class="dashboard-body">
+      
+      <!-- LEFT HERO PANEL -->
+      <aside class="left-hero-panel">
+        <div class="hero-content">
+          <div class="hero-badge">🎉 Festive Pre-Approved Offer</div>
+          
+          <h1 class="hero-title">
+            Instant Personal Loans <span>Up to ₹5 Lakhs</span>
+          </h1>
+          
+          <p class="hero-desc">
+            Skip the bank queues. Get your credit limit approved instantly with Aadhaar-linked digital KYC. Direct transfer in 10 mins.
+          </p>
+
+          <!-- Interactive Live EMI Preview Widget -->
+          <div class="live-credit-card">
+            <div class="card-label">Your Estimated Eligibility</div>
+            <div class="credit-amount-hero" id="heroAmountDisplay">₹1,00,000</div>
+            
+            <div class="feature-list">
+              <div class="feature-item">
+                <div class="feature-icon">✓</div>
+                <span>Monthly EMI: <strong id="heroEmiDisplay" style="color: var(--gold);">₹8,885</strong> /mo</span>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">✓</div>
+                <span>Tenure: <strong id="heroTenureDisplay" style="color: #fff;">12 Months</strong></span>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">✓</div>
+                <span>Rate: <strong style="color: var(--accent-green);">12.5% p.a. (Fixed)</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="made-in-india">
+          <span class="flag">🇮🇳</span> 
+          <span>Made with ❤️ for Bharat • Safe & Secure</span>
+        </div>
+      </aside>
+
+      <!-- RIGHT WIZARD PANEL -->
+      <main class="right-wizard-panel">
+        
+        <!-- Header Stepper -->
+        <div class="wizard-header-stepper">
+          <div class="stepper-track">
+            <div class="stepper-progress-fill" id="progressFill"></div>
+            <div class="step-node-wrapper active" data-step-indicator="1">
+              <div class="step-circle">1</div>
+              <div class="step-title-text">Amount</div>
+            </div>
+            <div class="step-node-wrapper" data-step-indicator="2">
+              <div class="step-circle">2</div>
+              <div class="step-title-text">KYC</div>
+            </div>
+            <div class="step-node-wrapper" data-step-indicator="3">
+              <div class="step-circle">3</div>
+              <div class="step-title-text">Work</div>
+            </div>
+            <div class="step-node-wrapper" data-step-indicator="4">
+              <div class="step-circle">4</div>
+              <div class="step-title-text">Payout</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wizard Form Content -->
+        <form id="loanWizardForm" class="wizard-content-body" onsubmit="return false;">
+          
+          <!-- STEP 1: Loan Amount & Calculator -->
+          <section class="wizard-step active" data-step="1">
+            <div class="step-header-block">
+              <h2>Customize Your Loan</h2>
+              <p>Adjust the sliders below to fit your monthly budget perfectly.</p>
+            </div>
+
+            <div class="calc-card-panel">
+              <div class="range-group">
+                <div class="range-header-row">
+                  <span class="range-label-title">I need (₹)</span>
+                  <span class="range-value-pill" id="calcAmountVal">₹1,00,000</span>
+                </div>
+                <input type="range" id="loanAmount" min="10000" max="500000" step="5000" value="100000">
+                <div class="range-bounds">
+                  <span>₹10,000</span>
+                  <span>₹5,00,000</span>
+                </div>
+              </div>
+
+              <div class="range-group">
+                <div class="range-header-row">
+                  <span class="range-label-title">For a duration of</span>
+                  <span class="range-value-pill" id="calcTenureVal" style="color: var(--brand-dark); background: var(--bg-light); border: 1px solid var(--border-color);">12 Months</span>
+                </div>
+                <input type="range" id="loanTenure" min="3" max="36" step="3" value="12">
+                <div class="range-bounds">
+                  <span>3 Months</span>
+                  <span>36 Months</span>
+                </div>
+              </div>
+
+              <!-- Calculation Breakdown -->
+              <div class="emi-summary-card">
+                <div class="emi-main-row">
+                  <span class="emi-label">Estimated Monthly EMI</span>
+                  <span class="emi-value" id="calcEmiVal">₹8,885</span>
+                </div>
+                <div class="data-row">
+                  <span>Interest Rate (p.a.)</span>
+                  <span class="bold">12.5%</span>
+                </div>
+                <div class="data-row">
+                  <span>Processing Fee (Inc. 18% GST)</span>
+                  <span class="bold" id="calcFeeVal">₹2,360</span>
+                </div>
+                <div class="data-row" style="margin-top: 16px; padding-top: 16px; border-top: 1px dashed #CBD5E1;">
+                  <span style="color: var(--brand-dark); font-weight: 700;">In-Hand Amount</span>
+                  <span class="bold" id="calcNetVal" style="color: var(--brand-dark); font-size: 1.1rem;">₹97,640</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- STEP 2: KYC & Identity Information -->
+          <section class="wizard-step" data-step="2">
+            <div class="step-header-block">
+              <h2>Verify Your Identity</h2>
+              <p>Provide details exactly as printed on your PAN and Aadhaar cards.</p>
+            </div>
+
+            <div class="info-banner">
+              <span>🛡️ <strong>100% Safe:</strong> Checking your pre-approved limit will NOT impact your CIBIL score.</span>
+            </div>
+
+            <div class="form-grid-layout">
+              <div class="input-box full-width">
+                <label for="fullName">Full Name (As per PAN)</label>
+                <div class="input-field-wrap">
+                  <span class="field-icon">👤</span>
+                  <input type="text" id="fullName" placeholder="e.g. Rahul Sharma" required>
+                </div>
+                <span class="error-hint">Please enter your full name.</span>
+              </div>
+
+              <div class="input-box">
+                <label for="panNum">PAN Card Number</label>
+                <div class="input-field-wrap">
+                  <span class="field-icon">🪪</span>
+                  <input type="text" id="panNum" placeholder="ABCDE1234F" pattern="[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}" maxlength="10" style="text-transform: uppercase;" required>
+                </div>
+                <span class="error-hint">Enter valid 10-character PAN.</span>
+              </div>
+
+              <div class="input-box">
+                <label for="mobile">Aadhaar Linked Mobile</label>
+                <div class="input-field-wrap">
+                  <span class="field-icon">📱</span>
+                  <input type="tel" id="mobile" placeholder="9876543210" pattern="[6-9][0-9]{9}" maxlength="10" required>
+                </div>
+                <span class="error-hint">Valid 10-digit mobile number required.</span>
+              </div>
+
+              <div class="input-box">
+                <label for="email">Email Address</label>
+                <div class="input-field-wrap">
+                  <span class="field-icon">✉️</span>
+                  <input type="email" id="email" placeholder="rahul@gmail.com" required>
+                </div>
+                <span class="error-hint">Valid email address required.</span>
+              </div>
+
+              <div class="input-box">
+                <label for="pincode">Current Area Pincode</label>
+                <div class="input-field-wrap">
+                  <span class="field-icon">📍</span>
+                  <input type="text" id="pincode" placeholder="400001" pattern="[0-9]{6}" maxlength="6" required>
+                </div>
+                <span class="error-hint">Valid 6-digit Pincode required.</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- STEP 3: Employment Details -->
+          <section class="wizard-step" data-step="3">
+            <div class="step-header-block">
+              <h2>Employment Details</h2>
+              <p>We use this to unlock the best interest rates for you.</p>
+            </div>
+
+            <div class="form-grid-layout">
+              <div class="input-box full-width">
+                <label for="empType">Employment Type</label>
+                <div class="input-field-wrap">
+                  <span class="field-icon">💼</span>
+                  <select id="empType" required>
+                    <option value="">Select Work Category</option>
+                    <option value="Salaried">Salaried (Private / Govt)</option>
+                    <option value="Self-Employed">Self-Employed / Business Owner</option>
+                    <option value="Freelancer">Freelancer / Consultant</option>
+                  </select>
+                </div>
+                <span class="error-hint">Please select employment type.</span>
+              </div>
+
+              <div class="input-box">
+                <label for="company">Company / Shop Name</label>
+                <div class="input-field-wrap">
+                  <span class="field-icon">🏢</span>
+                  <input type="text" id="company" placeholder="e.g. TCS / Sharma Traders" required>
+                </div>
+                <span class="error-hint">Entity name is required.</span>
+              </div>
+
+              <div class="input-box">
+                <label for="income">Monthly In-Hand Income (₹)</label>
+                <div class="input-field-wrap">
+                  <span class="field-icon">₹</span>
+                  <input type="number" id="income" placeholder="e.g. 45000" min="15000" required>
+                </div>
+                <span class="error-hint">Minimum monthly income requirement is ₹15,000.</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- STEP 4: Bank Details & Disbursal -->
+          <section class="wizard-step" data-step="4">
+            <div class="step-header-block">
+              <h2>Bank Account for Payout</h2>
+              <p>Where should we send your money? (Must match your PAN name)</p>
+            </div>
+
+            <div class="form-grid-layout">
+              <div class="input-box full-width">
+                <label for="bankSelect">Select Bank</label>
+                <div class="input-field-wrap">
+                  <span class="field-icon">🏦</span>
+                  <select id="bankSelect" required>
+                    <option value="">Choose your bank</option>
+                    <option value="HDFC Bank">HDFC Bank</option>
+                    <option value="State Bank of India">State Bank of India (SBI)</option>
+                    <option value="ICICI Bank">ICICI Bank</option>
+                    <option value="Axis Bank">Axis Bank</option>
+                    <option value="Kotak Mahindra Bank">Kotak Mahindra Bank</option>
+                    <option value="Bank of Baroda">Bank of Baroda</option>
+                    <option value="Punjab National Bank">Punjab National Bank</option>
+                    <option value="Other">Other Bank</option>
+                  </select>
+                </div>
+                <span class="error-hint">Please select your bank.</span>
+              </div>
+
+              <div class="input-box">
+                <label for="accNumber">Account Number</label>
+                <div class="input-field-wrap">
+                  <span class="field-icon">🔒</span>
+                  <input type="password" id="accNumber" placeholder="Enter Account Number" required>
+                </div>
+                <span class="error-hint">Account number is required.</span>
+              </div>
+
+              <div class="input-box">
+                <label for="ifsc">Bank IFSC Code</label>
+                <div class="input-field-wrap">
+                  <span class="field-icon">🔍</span>
+                  <input type="text" id="ifsc" placeholder="e.g. SBIN0001234" pattern="[A-Za-z]{4}0[A-Za-z0-9]{6}" maxlength="11" style="text-transform: uppercase;" required>
+                </div>
+                <span class="error-hint">Valid 11-digit IFSC code required.</span>
+              </div>
+            </div>
+
+            <!-- Review Box -->
+            <div class="final-review-card">
+              <h4>Application Summary</h4>
+              <div class="review-grid">
+                <div class="review-item">
+                  <span class="lbl">Loan Amount</span>
+                  <span class="val" id="revAmount">₹1,00,000</span>
+                </div>
+                <div class="review-item">
+                  <span class="lbl">Monthly EMI</span>
+                  <span class="val" id="revEmi" style="color: var(--gold);">₹8,885</span>
+                </div>
+                <div class="review-item">
+                  <span class="lbl">Applicant Name</span>
+                  <span class="val" id="revName">-</span>
+                </div>
+                <div class="review-item">
+                  <span class="lbl">Tenure</span>
+                  <span class="val" id="revTenure">12 Months</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="terms-row">
+              <input type="checkbox" id="terms" required>
+              <label for="terms">
+                I agree to the Terms & Conditions and hereby appoint KreditFlex as my authorized representative to fetch my CIBIL/Experian credit report.
+              </label>
+            </div>
+          </section>
+
+        </form>
+
+        <!-- Footer Control Buttons -->
+        <footer class="wizard-footer-controls">
+          <button type="button" id="prevBtn" class="btn btn-secondary" style="display: none;">← Back</button>
+          <button type="button" id="nextBtn" class="btn btn-primary">Proceed to Next Step ➔</button>
+          <button type="submit" id="submitBtn" class="btn btn-success" style="display: none;">Get Money Instantly ⚡</button>
+        </footer>
+
+      </main>
+
+    </div>
+  </div>
+
+  <!-- Success Confirmation Modal -->
+  <div class="modal-backdrop" id="successModal">
+    <div class="modal-box">
+      <div class="modal-icon-circle">✓</div>
+      <h3>Disbursal Initiated!</h3>
+      <p>Congratulations! Your loan is approved. Funds are being transferred via IMPS/NEFT to your bank account.</p>
+      
+      <div class="ref-badge" id="refId">Ref ID: #KBD-IN-89301</div>
+
+      <p style="font-size: 0.9rem; color: var(--text-muted); background: var(--bg-light); padding: 12px; border-radius: 8px;">
+        <strong>Expected Credit Time:</strong> ~5 to 10 Minutes<br>
+        We've sent an SMS confirmation to your mobile.
+      </p>
+
+      <button class="btn btn-primary" style="width: 100%; margin-top: 20px;" onclick="window.location.reload();">Back to Home</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Configuration & State
+      const config = {
+        annualRate: 0.125, // 12.5% P.A.
+        feeRate: 0.02,     // 2% Processing Fee
+        gstRate: 0.18      // 18% GST
+      };
+
+      let currentStep = 1;
+      const totalSteps = 4;
+
+      // Element References
+      const loanAmountInput = document.getElementById("loanAmount");
+      const loanTenureInput = document.getElementById("loanTenure");
+      
+      const heroAmountDisplay = document.getElementById("heroAmountDisplay");
+      const heroEmiDisplay = document.getElementById("heroEmiDisplay");
+      const heroTenureDisplay = document.getElementById("heroTenureDisplay");
+
+      const calcAmountVal = document.getElementById("calcAmountVal");
+      const calcTenureVal = document.getElementById("calcTenureVal");
+      const calcEmiVal = document.getElementById("calcEmiVal");
+      const calcFeeVal = document.getElementById("calcFeeVal");
+      const calcNetVal = document.getElementById("calcNetVal");
+
+      const prevBtn = document.getElementById("prevBtn");
+      const nextBtn = document.getElementById("nextBtn");
+      const submitBtn = document.getElementById("submitBtn");
+      const progressFill = document.getElementById("progressFill");
+      const successModal = document.getElementById("successModal");
+
+      // Format Numbers to Indian Rupee (₹) - e.g. 1,00,000 format
+      const formatINR = (num) => {
+        return new Intl.NumberFormat('en-IN', {
+          style: 'currency',
+          currency: 'INR',
+          maximumFractionDigits: 0
+        }).format(num);
+      };
+
+      // Recalculate Loan Metrics
+      const updateCalculations = () => {
+        const principal = parseFloat(loanAmountInput.value);
+        const months = parseInt(loanTenureInput.value);
+        const monthlyRate = config.annualRate / 12;
+
+        // Reducing balance EMI Formula
+        const emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, months)) /
+                    (Math.pow(1 + monthlyRate, months) - 1);
+
+        const fee = principal * config.feeRate;
+        const totalFeeGST = fee + (fee * config.gstRate);
+        const netDisbursed = principal - totalFeeGST;
+
+        // Sync Left Hero Showcase
+        heroAmountDisplay.textContent = formatINR(principal);
+        heroEmiDisplay.textContent = formatINR(emi);
+        heroTenureDisplay.textContent = `${months} Months`;
+
+        // Sync Step 1 View
+        calcAmountVal.textContent = formatINR(principal);
+        calcTenureVal.textContent = `${months} Months`;
+        calcEmiVal.textContent = formatINR(emi);
+        calcFeeVal.textContent = formatINR(totalFeeGST);
+        calcNetVal.textContent = formatINR(netDisbursed);
+
+        // Sync Step 4 Summary View
+        document.getElementById("revAmount").textContent = formatINR(principal);
+        document.getElementById("revEmi").textContent = `${formatINR(emi)}/mo`;
+        document.getElementById("revTenure").textContent = `${months} Months`;
+      };
+
+      // Wizard Step Transition
+      const setWizardStep = (step) => {
+        // Switch section visibility
+        document.querySelectorAll(".wizard-step").forEach((section) => {
+          section.classList.remove("active");
+          if (parseInt(section.dataset.step) === step) {
+            section.classList.add("active");
+          }
+        });
+
+        // Update Stepper Progress Bar
+        const fillPercent = ((step - 1) / (totalSteps - 1)) * 100;
+        progressFill.style.width = `${fillPercent}%`;
+
+        document.querySelectorAll(".step-node-wrapper").forEach((item) => {
+          const itemStep = parseInt(item.getAttribute("data-step-indicator"));
+          item.classList.remove("active", "completed");
+
+          if (itemStep === step) {
+            item.classList.add("active");
+          } else if (itemStep < step) {
+            item.classList.add("completed");
+          }
+        });
+
+        // Control buttons
+        prevBtn.style.display = step === 1 ? "none" : "inline-flex";
+
+        if (step === totalSteps) {
+          nextBtn.style.display = "none";
+          submitBtn.style.display = "inline-flex";
+          const nameInput = document.getElementById("fullName").value;
+          document.getElementById("revName").textContent = nameInput || "Applicant";
+        } else {
+          nextBtn.style.display = "inline-flex";
+          submitBtn.style.display = "none";
+        }
+      };
+
+      // Form Validation
+      const validateCurrentStep = (step) => {
+        const currentSection = document.querySelector(`.wizard-step[data-step="${step}"]`);
+        const inputs = currentSection.querySelectorAll("input[required], select[required]");
+        let isValid = true;
+
+        inputs.forEach((input) => {
+          const parentBox = input.closest(".input-box") || input.parentElement;
+          if (!input.checkValidity()) {
+            parentBox.classList.add("invalid");
+            isValid = false;
+          } else {
+            parentBox.classList.remove("invalid");
+          }
+        });
+
+        return isValid;
+      };
+
+      // Random Ref ID for Indian Context
+      const generateRefId = () => {
+        const rand = Math.floor(100000 + Math.random() * 900000);
+        return `Ref ID: #KBD-IN-${rand}`;
+      };
+
+      // Listeners
+      loanAmountInput.addEventListener("input", updateCalculations);
+      loanTenureInput.addEventListener("input", updateCalculations);
+
+      nextBtn.addEventListener("click", () => {
+        if (validateCurrentStep(currentStep)) {
+          if (currentStep < totalSteps) {
+            currentStep++;
+            setWizardStep(currentStep);
+          }
+        }
+      });
+
+      prevBtn.addEventListener("click", () => {
+        if (currentStep > 1) {
+          currentStep--;
+          setWizardStep(currentStep);
+        }
+      });
+
+      submitBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (validateCurrentStep(currentStep)) {
+          // Check checkbox
+          if(!document.getElementById("terms").checked) {
+             alert("Please accept the Terms & Conditions to proceed.");
+             return;
+          }
+          document.getElementById("refId").textContent = generateRefId();
+          successModal.style.display = "flex";
+        }
+      });
+
+      // Dynamic Error Clearing
+      document.getElementById("loanWizardForm").addEventListener("input", (e) => {
+        const parentBox = e.target.closest(".input-box");
+        if (parentBox && e.target.checkValidity()) {
+          parentBox.classList.remove("invalid");
+        }
+      });
+
+      // Initialize
+      updateCalculations();
+    });
+  </script>
+</body>
+</html>
